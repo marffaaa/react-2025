@@ -1,12 +1,12 @@
-import './App.css'
+import UsersComponent from "./components/UsersComponent";
 
-function App() {
+const App = () => {
 
+    return (
+        <div>
+            <UsersComponent/>
+        </div>
+    );
+};
 
-  return (
-    <>
-    </>
-  )
-}
-
-export default App
+export default App;
