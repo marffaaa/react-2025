@@ -1,11 +1,16 @@
 import { IUser } from "../models/IUser";
 
 const getUsers = async ():Promise<IUser[]> =>{
-    const users = await fetch('https://jsonplaceholder.typicode.com/users')
+    return await fetch('https://jsonplaceholder.typicode.com/users')
         .then(value => value.json());
-    return users;
+}
+
+const getUser = async (id:string):Promise<IUser> =>{
+    return await fetch('https://jsonplaceholder.typicode.com/users/' + id)
+        .then(value => value.json());
 }
 
 export {
-    getUsers
+    getUsers,
+    getUser
 }
