@@ -8,10 +8,12 @@ const UsersComponent = () => {
     const [users, setUsers] = useState<IUser[]>([]);
 
     useEffect(() => {
-        getUsers()
-            .then(response =>{
-                setUsers(response);
-            });
+        const fetchData= async ()=>{
+            const users = await getUsers();
+            setUsers(users);
+        }
+
+        fetchData();
 
         return ()=>{
             console.log('done')
