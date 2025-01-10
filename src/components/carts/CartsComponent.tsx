@@ -1,26 +1,15 @@
 import { useParams } from "react-router-dom";
-
-import { useEffect, useState } from "react";
-import { ICart } from "../../models/ICart";
-import { ICartResponse } from "../../models/ICartResponse";
 import CartComponent from "../cart/CartComponent";
-
+import useCarts from "./useFetchCarts";
 
 const CartsComponent = () => {
-    const {id} = useParams();
-    const [carts, setCarts] = useState<ICart[]>([])
-    useEffect(() => {
-        fetch('https://dummyjson.com/carts/user/'+ id)
-            .then(respons => respons.json())
-            .then(({carts}: ICartResponse)=>{
-                setCarts(carts)
-            } )
+    const { id } = useParams();
+    const carts = useCarts(id);
 
-    }, [id]);
     return (
         <div>
             <div>
-                    {carts.map((cart) => (<CartComponent key={cart.id} cart={cart}/>))}
+                {carts.map((cart) => (<CartComponent key={cart.id} cart={cart} />))}
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import { urls } from "../constants/urls";
 import { ICart } from "../models/ICart";
+import { ICartResponse } from "../models/ICartResponse";
 import { IUser } from "../models/IUser";
 
 const userService = {
@@ -16,9 +17,10 @@ const userService = {
 }
 
 const cartService = {
-    getUserCarts: async (id:string): Promise<ICart> =>{
+    getUserCarts: async (id:string): Promise<ICart[]> =>{
         return await fetch(urls.carts.cartsById(id))
             .then(value => value.json())
+            .then(({ carts }: ICartResponse)=> carts)
     }
 }
 export {

@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
-import {cartService} from "../../services/api.services";
+import { useState, useEffect } from "react";
 import { ICart } from "../../models/ICart";
+import { ICartResponse } from "../../models/ICartResponse";
 
-export const useFetchCarts = (id:string) => {
-    const [carts, setCarts] = useState<ICart>();
+const useCarts = (userId: string | undefined) => {
+    const [carts, setCarts] = useState<ICart[]>([]);
 
     useEffect(() => {
-        const fetchCarts = async () => {
-            const allCarts = await cartService.getUserCarts(id);
-            setCarts(allCarts);
-        };
-        fetchCarts();
-    }, []);
-    return { carts };
+        if (userId) {
+            fetch('https://dummyjson.com/carts/user/' + userId)
+                .then(response => response.json())
+                .then(({ carts }: ICartResponse) => {
+                    setCarts(carts);
+                });
+        }
+    }, [userId]);
+
+    return carts;
 };
+
+export default useCarts;

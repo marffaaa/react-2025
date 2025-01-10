@@ -8,8 +8,7 @@ export const useFetchUsers = () => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const allUsers = await userService.getUsers();
-            setUsers(allUsers);
+            setUsers(await userService.getUsers());
         };
         fetchUsers();
     }, []);
