@@ -3,10 +3,10 @@ import './menu.css'
 const Menu = () => {
     return (
         <div>
-            <ul>
-                <li><Link to={''}>home</Link></li>
-                <li><Link to={'users'}>users</Link></li>
-                <li><Link to={'posts'}>posts</Link></li>
+            <ul className="flex flex-row gap-20 justify-center my-7">
+                <li className="scale-125"><Link to={''}>home</Link></li>
+                <li className="scale-125"><Link to={'users'}>users</Link></li>
+                <li className="scale-125"><Link to={'posts'}>posts</Link></li>
             </ul>
         </div>
     );

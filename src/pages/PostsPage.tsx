@@ -1,9 +1,10 @@
+import PostsComponent from "../components/posts/PostsComponent";
 
 
 const PostsPage = () => {
     return (
         <div>
-            PostsPage content
+            <PostsComponent/>
         </div>
     );
 };

@@ -1,21 +1,13 @@
-import {useEffect, useState } from "react";
-import { IUser } from "../../models/IUser";
-import UserComponent from "../user/UserComponent";
-import { userService } from "../../services/api.service";
 
+import UserComponent from "../user/UserComponent";
+import { useFetchUsers } from "./useFetchUsers";
 
 const UsersComponent = () => {
+    const { users } = useFetchUsers();
 
-    const [users, setUsers] = useState<IUser[]>([])
-
-    useEffect(() => {
-        userService.getUsers().then((allUsers)=>{
-            setUsers(allUsers);
-        })
-    }, []);
     return (
         <div>
-            {users.map(user=> <UserComponent key={user.id} item={user}/>)}
+            {users.map((user) => (<UserComponent key={user.id} item={user}/>))}
         </div>
     );
 };
