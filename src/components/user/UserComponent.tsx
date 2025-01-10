@@ -27,7 +27,7 @@ const UserComponent: FC<UserTypeProps> = ({ item }) => {
                     Address: {item.address.country}, {item.address.city}
                 </p>
 
-                <button onClick={buttonHandler} className="my-3 self-center bg-slate-100 rounded-xl p-1.5 w-36">show carts</button>
+                <button onClick={buttonHandler} className="my-3 font-semibold self-center bg-slate-100 rounded-xl p-1.5 w-36">show carts</button>
             </div>
         </div>
     );
