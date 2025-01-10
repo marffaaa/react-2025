@@ -7,13 +7,17 @@ type CartTypeProps={
 }
 const CartComponent:FC<CartTypeProps> = ({cart}) => {
     return (
-        <div>
-            <p>{cart.products.map((product)=><ProductComponent key={product.id} item={product}/>)}</p>
-            <p>{cart.total}</p>
-            <p>{cart.totalProducts}</p>
-            <p>{cart.totalQuantity}</p>
-            <p>{cart.discountedTotal}</p>
+        <div className="flex justify-center w-screen my-8">
+            <div className="flex flex-col w-1/3 h-auto bg-slate-300 rounded-xl gap-y-2.5 justify-center p-4">
+                <h2 className="font-semibold text-lg">Products list:</h2>
+                <p>{cart.products.map((product) => <ProductComponent key={product.id} item={product}/>)}</p>
+                <p>Total products: {cart.totalProducts}</p>
+                <p>Total quantity: {cart.totalQuantity}</p>
+                <p>Total: {cart.total}</p>
+                <p>Discounted total: {cart.discountedTotal}</p>
+            </div>
         </div>
+
     );
 };
 

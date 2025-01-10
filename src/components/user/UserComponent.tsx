@@ -13,7 +13,7 @@ const UserComponent: FC<UserTypeProps> = ({ item }) => {
     }
     return (
         <div className="flex justify-center w-screen my-8">
-            <div className="flex flex-col w-1/3 h-auto bg-slate-300 rounded-xl gap-y-2.5 justify-center p-4">
+            <div className="flex flex-col w-1/3 h-auto bg-slate-300 rounded-xl gap-y-2.5 justify-center p-7">
                 <h2 className="font-bold text-lg">
                     {item.id}. {item.firstName} {item.lastName}
                 </h2>
@@ -27,7 +27,7 @@ const UserComponent: FC<UserTypeProps> = ({ item }) => {
                     Address: {item.address.country}, {item.address.city}
                 </p>
 
-                <button onClick={buttonHandler} className="border-2">show carts</button>
+                <button onClick={buttonHandler} className="my-3 self-center bg-slate-100 rounded-xl p-1.5 w-36">show carts</button>
             </div>
         </div>
     );
