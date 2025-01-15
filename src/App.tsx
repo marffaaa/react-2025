@@ -1,13 +1,13 @@
 import './App.css'
 import PaginationComponent from './components/pagination/PaginationComponent'
-import Some from './components/some/Some'
+import UsersComponent from './components/users/UsersComponent'
 
 function App() {
 
 
   return (
     <>
-        <Some/>
+        <UsersComponent/>
       <PaginationComponent/>
     </>
   )
