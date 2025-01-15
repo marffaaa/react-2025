@@ -1,4 +1,5 @@
 import { urls } from "../constants/urls"
+import { IPost } from "../models/IPost"
 import { IUser } from "../models/IUser"
 
 export const userService = {
@@ -11,4 +12,11 @@ export const userService = {
             .then(value => value.json())
     }
 
+}
+
+export const postService = {
+    getAllPostsOfUserById: async (id:number):Promise<IPost[]> =>{
+        return await fetch(urls.posts.userPostsByID(id))
+            .then(value => value.json())
+    }
 }
