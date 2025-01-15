@@ -1,28 +1,13 @@
 import { urls } from "../constants/urls"
-import { IPost } from "../models/post/IPost"
-import { IUser } from "../models/user/IUser"
-
+import { IUsersResponse } from "../models/response/IUsersResponse";
 
 const userService = {
-    getUsers: async (): Promise<IUser[]> =>{
-        return await fetch(urls.users.allUsers)
+    getAllUsers: async (skip:string): Promise<IUsersResponse> =>{
+        return await fetch(urls.users.allUsers + '?skip=' + skip)
             .then(value => value.json())
-            .then((data) => data.users);
     },
-    getUser: async (id:number): Promise<IUser> =>{
-        return await fetch(urls.users.byID(id))
-            .then(value => value.json())
-    }
-}
-
-const postService = {
-    getPosts: async (): Promise<IPost[]> =>{
-        return await fetch(urls.posts.allPosts)
-            .then(value => value.json())
-            .then((data) => data.posts);
-    }
 }
 
 export {
-    userService, postService
+    userService
 }

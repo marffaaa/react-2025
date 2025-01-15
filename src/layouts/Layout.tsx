@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Menu from "../components/menu/Menu";
+import PaginationComponent from "../components/pagination/PaginationComponent";
+
 
 const Layout = () => {
     return (
         <div>
-            <Menu/>
-            <hr/>
             <Outlet/>
+            <PaginationComponent/>
         </div>
     );
 };
