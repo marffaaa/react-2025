@@ -9,7 +9,7 @@ const UsersComponent = () => {
     const[query] = useSearchParams()
     const [users, setUsers] = useState<IUser[]>([])
     useEffect(() => {
-        userService.getAllUsers((query.get('skip')) || '30').then(value => setUsers(value.users))
+        userService.getAllUsers((query.get('skip')) || '0').then(value => setUsers(value.users))
     }, [query]);
     return (
         <div>
