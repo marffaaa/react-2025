@@ -12,9 +12,12 @@ const CarsComponent = () => {
 
     }, []);
     return (
-        <div>
-            {cars && cars.map(car => <CarComponent car={car} key={car.id}/>)}
-        </div>
+            <div className=" columns-3 my-8">
+                <div className="flex flex-col justify-center justify-self-center">
+                    {cars && cars.map(car => <CarComponent car={car} key={car.id}/>)}
+                </div>
+            </div>
+
     );
 };
 
