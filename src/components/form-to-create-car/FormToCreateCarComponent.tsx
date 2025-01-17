@@ -6,8 +6,8 @@ import { carValidator } from "../../validators/car.validator";
 
 const FormToCreateCarComponent = () => {
     const {handleSubmit, register, formState:{errors}} = useForm<ICar>({mode:"all", resolver: joiResolver(carValidator)});
-    const customHandler = (data: ICar) =>{
-        addNewCar(data)
+    const customHandler = async (data: ICar) =>{
+        await addNewCar(data)
     }
     return (
         <div className="flex justify-center items-center w-screen h-screen">

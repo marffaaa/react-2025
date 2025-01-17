@@ -10,7 +10,7 @@ const getAllCars = async ():Promise<ICar[]> =>{
     return data
 }
 
-const addNewCar = async (car:ICar)=>{
+const addNewCar = async (car:ICar):Promise<void>=>{
     await axiosInstance.post<ICar>('/cars', car)
 }
 
