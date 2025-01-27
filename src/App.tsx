@@ -1,10 +1,17 @@
 import './App.css'
+import UsersComponent from './components/users/UsersComponent'
+
+// Створити кастомний  хук  який буде повертати відповіді з апі і заміняти useState+ useEffect. ендпоінт апі -
+// аргумент вашого хука. Продумати логіку типізації відповіді.
+//     Приклад сигнатури:
+//     useFetch<T>(url)
 
 function App() {
 
 
   return (
     <>
+      <UsersComponent/>
     </>
   )
 }
