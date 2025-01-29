@@ -1,18 +1,16 @@
 import './App.css'
-import UsersComponent from './components/users/UsersComponent'
+import Root from './components/Root'
 
-// Створити кастомний  хук  який буде повертати відповіді з апі і заміняти useState+ useEffect. ендпоінт апі -
-// аргумент вашого хука. Продумати логіку типізації відповіді.
-//     Приклад сигнатури:
-//     useFetch<T>(url)
+// Зробити дерево компонентів, в дві сторони. Чим глибше тим краще для вас. Зробити контекст.
+// Зробити кнопку, яка буде міняти "тему" зі світлої на темну.
 
 function App() {
 
 
   return (
-    <>
-      <UsersComponent/>
-    </>
+    <div>
+        <Root/>
+    </div>
   )
 }
 
