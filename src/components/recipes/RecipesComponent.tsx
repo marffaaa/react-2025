@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-
-import { IRecipe } from "../../models/IRecipe";
 import RecipeComponent from "../recipe/RecipeComponent";
+import PaginationComponent from "../pagination/PaginationComponent";
+import { IRecipe } from "../../models/IRecipe";
 import { getAllRecipes } from "../../services/api.services";
 
-
 const RecipesComponent = () => {
-    const[query] = useSearchParams()
-    const [recipes, setRecipes] = useState<IRecipe[]>([])
+    const [query] = useSearchParams();
+    const [recipes, setRecipes] = useState<IRecipe[]>([]);
+    const [total, setTotal] = useState<number>(0);
+    const limit = 30;
+    const skip = Number(query.get('skip')) || 0;
+
     useEffect(() => {
-        getAllRecipes((query.get('pg')) || '1').then(value => setRecipes(value.recipes))
+        getAllRecipes(skip.toString()).then((value) => {
+            setRecipes(value.recipes);
+            setTotal(value.total);
+        });
     }, [query]);
+
     return (
         <div>
-            {
-                recipes.map((recipe) => <RecipeComponent recipe={recipe} key={recipe.id}/>)
-            }
+            {recipes.map((recipe) => (
+                <RecipeComponent key={recipe.id} recipe={recipe} />
+            ))}
+            <PaginationComponent total={total} limit={limit} />
         </div>
     );
 };

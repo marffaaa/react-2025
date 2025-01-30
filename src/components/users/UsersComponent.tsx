@@ -1,22 +1,29 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-
-import {getAllUsers } from "../../services/api.services";
-import { IUser } from "../../models/IUser";
+import {useEffect, useState} from "react";
+import {useSearchParams} from "react-router-dom";
 import UserComponent from "../user/UserComponent";
-
+import PaginationComponent from "../pagination/PaginationComponent";
+import { getAllUsers } from "../../services/api.services";
+import { IUser } from "../../models/IUser";
 
 const UsersComponent = () => {
-    const[query] = useSearchParams()
-    const [users, setUsers] = useState<IUser[]>([])
+    const [query] = useSearchParams();
+    const [users, setUsers] = useState<IUser[]>([]);
+    const [total, setTotal] = useState<number>(0);
+    const limit = 30;
+    const skip = Number(query.get('skip')) || 0;
+
     useEffect(() => {
-        getAllUsers((query.get('pg')) || '1').then(value => setUsers(value.users))
+        getAllUsers(skip.toString()).then((value) => {
+            setUsers(value.users);
+            setTotal(value.total);
+        });
     }, [query]);
+
     return (
         <div>
-            {
-                users.map((user) => <UserComponent user={user} key={user.id}/>)
-            }
+            {users.map((user) => (<UserComponent key={user.id} user={user} />))}
+
+            <PaginationComponent total={total} limit={limit} />
         </div>
     );
 };

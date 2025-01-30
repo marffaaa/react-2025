@@ -1,11 +1,12 @@
+
 import { FC } from "react";
 import { IUser } from "../../models/IUser";
 
-type PropsType ={
-    user: IUser
-}
+type PropsType = {
+    user: IUser;
+};
 
-const UserDetailsComponent:FC<PropsType> = ({user}) => {
+const UserDetailsComponent: FC<PropsType> = ({ user }) => {
     return (
         <div>
             <h2>{user.id}: {user.firstName} {user.lastName}</h2>

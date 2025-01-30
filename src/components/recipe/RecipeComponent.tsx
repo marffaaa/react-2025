@@ -11,7 +11,7 @@ const RecipeComponent: FC<PropsType> = ({ recipe }) => {
         <div>
             {/* Використовуємо Link для переходу на сторінку з деталями рецепта */}
             <h2>
-                <Link to={`/auth/recipes/details/${recipe.id}`}>{recipe.name}</Link>
+                <Link to={`/auth/recipes/details/${recipe.id}`}>{recipe.id}. {recipe.name}</Link>
             </h2>
             <p>{recipe.tags.map(tag => `#${tag}`).join(' ')}</p>
         </div>
