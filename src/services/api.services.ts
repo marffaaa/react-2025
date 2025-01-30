@@ -16,3 +16,14 @@ export const getRecipeById = async (id: string): Promise<IRecipeResponse> => {
     return await fetch(urls.recipes.recipeById + id)
         .then(response => response.json());
 };
+
+
+type SearchResponse = IUsersResponse | IRecipeResponse;
+
+export const search = async (type: "users" | "recipes", query: string): Promise<SearchResponse> => {
+    const url = type === "users"
+        ? `${urls.users.allUsers}?search=${query}` : `${urls.recipes.allRecipes}?search=${query}`;
+
+    return await fetch(url)
+        .then(response => response.json());
+};

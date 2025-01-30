@@ -13,4 +13,5 @@ export const urls = {
             return baseUrl + '/recipes/' + id;
         },
     },
+
 }

@@ -5,17 +5,19 @@ import HomePage from "../pages/HomePage";
 import AuthPage from "../pages/AuthPage";
 import UsersPage from "../pages/UsersPage";
 import RecipesPage from "../pages/RecipesPage";
-import RecipeDetailPage from "../pages/RecipeDetailPage";
+import RecipeDetailPage from "../pages/RecipeDetailPage"; // Імпортуємо компонент деталів рецепта
 
 export const routes = createBrowserRouter([
-    {path: '/',
-        element: <Layout/>,
+    {
+        path: '/',
+        element: <Layout />,
         children: [
-            {index: true, element: <HomePage/> },
-            {path: 'auth', element: <AuthPage/> },
-            {path: '/auth/users', element: <UsersPage/> },
-            {path: '/auth/users/details', element: <UserDetailPage/> },
-            {path: '/auth/recipes', element: <RecipesPage/> },
-            {path: '/auth/recipes/details', element: <RecipeDetailPage/> }]
+            { index: true, element: <HomePage /> },
+            { path: 'auth', element: <AuthPage /> },
+            { path: '/auth/users', element: <UsersPage /> },
+            { path: '/auth/users/details/:id', element: <UserDetailPage /> },
+            { path: '/auth/recipes', element: <RecipesPage /> },
+            { path: '/auth/recipes/details/:id', element: <RecipeDetailPage /> }
+        ]
     }
-])
+]);
