@@ -17,15 +17,13 @@ export const getUserById = async (id: number): Promise<IUser> => {
     return response.json();
 };
 
-
-
 export const getAllRecipes = async (skip: string): Promise<IRecipeResponse> => {
     return await fetch(urls.recipes.allRecipes + '?skip=' + skip)
         .then(response => response.json());
 };
 
-export const getRecipeById = async (id: string): Promise<IRecipe> => {
-    return await fetch(urls.recipes.recipeById + id)
+export const getRecipeById = async (id: number): Promise<IRecipe> => {
+    return await fetch(urls.recipes.recipeById(id))
         .then(response => response.json());
 };
 

@@ -1,18 +1,11 @@
-import { useParams } from "react-router-dom";
-import useFetchRecipe from "./useFetchRecipe";
+import { IRecipe } from "../../models/IRecipe";
 
-const RecipeDetailPage = () => {
-    const { id } = useParams();
-    const { recipe, loading } = useFetchRecipe(id);
 
-    if (loading) {
-        return <p>Loading...</p>;
-    }
+type RecipeDetailComponentProps = {
+    recipe: IRecipe;
+};
 
-    if (!recipe) {
-        return <p>Recipe not found</p>;
-    }
-
+const RecipeDetailComponent = ({ recipe }: RecipeDetailComponentProps) => {
     return (
         <div>
             <h1>{recipe.name}</h1>
@@ -23,22 +16,25 @@ const RecipeDetailPage = () => {
             <p><strong>Cook Time:</strong> {recipe.cookTimeMinutes} minutes</p>
             <p><strong>Servings:</strong> {recipe.servings}</p>
             <p><strong>Calories per Serving:</strong> {recipe.caloriesPerServing}</p>
+
             <h3>Ingredients</h3>
             <ul>
-                {recipe.ingredients.map((value: string, index: number) => (
-                    <li key={index}>{value}</li>
+                {recipe.ingredients.map((ingredient:string, index:number) => (
+                    <li key={index}>{ingredient}</li>
                 ))}
             </ul>
+
             <h3>Instructions</h3>
             <ol>
-                {recipe.instructions.map((value: string, index: number) => (
-                    <li key={index}>{value}</li>
+                {recipe.instructions.map((instruction:string, index:number) => (
+                    <li key={index}>{instruction}</li>
                 ))}
             </ol>
+
             <p><strong>Tags:</strong> {recipe.tags.join(", ")}</p>
             <p><strong>Rating:</strong> {recipe.rating} ({recipe.reviewCount} reviews)</p>
         </div>
     );
 };
 
-export default RecipeDetailPage;
+export default RecipeDetailComponent;

@@ -1,4 +1,4 @@
-// UsersComponent.tsx
+
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "../../models/IUser";
@@ -11,7 +11,7 @@ const UserComponent: FC<PropsType> = ({ user }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/auth/users/${user.id}`); // Перехід на сторінку користувача
+        navigate(`/auth/users/${user.id}`);
     };
 
     return (
