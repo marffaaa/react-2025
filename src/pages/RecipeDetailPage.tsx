@@ -5,28 +5,27 @@ import { getRecipeById } from "../services/api.services";
 import RecipeDetailsComponent from "../components/recipe/RecipeDetailsComponent";
 
 const RecipeDetailPage = () => {
-    const { id } = useParams(); // Отримуємо id з параметрів URL
-    const [recipe, setRecipe] = useState<IRecipe | null>(null); // Стан для зберігання рецепта
-    const [error, setError] = useState<string | null>(null); // Стан для помилок
+    const { id } = useParams();
+    const [recipe, setRecipe] = useState<IRecipe | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if (id) {
-            // Перевірка на наявність id
-            const recipeId = parseInt(id); // Перетворення id в число
-            console.log('id from params:', id); // Логування отриманого id
-            console.log('Parsed ID:', recipeId);
+            const recipeId = parseInt(id);
+            // console.log('id from params:', id);
+            // console.log('Parsed ID:', recipeId);
 
             if (!isNaN(recipeId)) {
-                getRecipeById(recipeId) // Отримуємо рецепт за id
+                getRecipeById(recipeId)
                     .then((data) => {
-                        setRecipe(data); // Зберігаємо отримані дані
-                        setError(null); // Очищуємо помилку, якщо рецепт знайдений
+                        setRecipe(data);
+                        setError(null);
                     })
                     .catch(() => {
-                        setError("Recipe not found"); // Виводимо помилку, якщо не знайдено
+                        setError("Recipe not found");
                     });
             } else {
-                setError("Invalid recipe ID"); // Помилка, якщо id не коректне
+                setError("Invalid recipe ID");
             }
         }
     }, [id]); // Залежність від id

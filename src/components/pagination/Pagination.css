@@ -1,0 +1,21 @@
+/* Загальний контейнер, що займає всю висоту екрану */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Мінімальна висота екрану */
+}
+
+/* Контент, який займає доступну площу */
+.main-content {
+    flex-grow: 1;
+    padding: 20px; /* Відступи */
+}
+
+/* Пагінація, яка знаходиться внизу */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 10px 0;
+    background-color: white;  /* Можна змінити фон, щоб відрізнялась від контенту */
+}

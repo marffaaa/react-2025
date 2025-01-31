@@ -25,21 +25,23 @@ const PaginationComponent: React.FC<PaginationProps> = ({ total, limit }) => {
     };
 
     return (
-        <div className="flex flex-row gap-x-8 justify-center m-7">
-            <button
-                className="w-28 h-10 bg-slate-300 rounded-xl font-semibold shadow-md"
-                onClick={handlePrev}
-                disabled={currentSkip <= 0}
-            >
-                prev
-            </button>
-            <button
-                className="w-28 h-10 bg-slate-300 rounded-xl font-semibold shadow-md"
-                onClick={handleNext}
-                disabled={currentSkip + limit >= total}
-            >
-                next
-            </button>
+        <div className="pagination-container flex justify-center">
+            <div className="pagination-buttons m-5 flex gap-6">
+                <button
+                    className="w-28 h-10 rounded-xl font-bold text-lg shadow-md bg-red-900 text-orange-50"
+                    onClick={handlePrev}
+                    disabled={currentSkip <= 0}
+                >
+                    Prev
+                </button>
+                <button
+                    className="w-28 h-10 rounded-xl text-lg font-bold shadow-md bg-red-900 text-orange-50"
+                    onClick={handleNext}
+                    disabled={currentSkip + limit >= total}
+                >
+                    Next
+                </button>
+            </div>
         </div>
     );
 };

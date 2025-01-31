@@ -20,7 +20,7 @@ const RecipesComponent = () => {
     }, [query]);
 
     return (
-        <div>
+        <div className='w-full h-full bg-red-50 m-0 pt-5'>
             {recipes.map((recipe) => (
                 <RecipeComponent key={recipe.id} recipe={recipe} />
             ))}

@@ -1,0 +1,31 @@
+ol {
+    list-style-type: none;
+    counter-reset: num;
+    margin: 0 0 0 45px;
+    padding: 15px 0 5px 0;
+    font-size: 16px;
+}
+ol li {
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 0 0 10px 0;
+    line-height: 1.4;
+}
+ol li:before {
+    content: counter(num);
+    counter-increment: num;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: -38px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    color: #231919;
+    text-align: center;
+    line-height: 28px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: 2px solid #ab3f53;
+    font-weight: bolder;
+}

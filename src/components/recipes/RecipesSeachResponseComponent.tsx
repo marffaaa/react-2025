@@ -10,7 +10,7 @@ interface RecipeComponentProps {
 
 const RecipesSearchResponseComponent:FC<RecipeComponentProps> = ({ recipe }) => {
     return (
-        <div>
+        <div className='border-t-2 border-red-950 w-full h-full bg-red-50 m-0'>
             {<RecipeComponent recipe={recipe} key={recipe.id}/>}
         </div>
     );

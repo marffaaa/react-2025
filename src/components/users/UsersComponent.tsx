@@ -20,7 +20,7 @@ const UsersComponent = () => {
     }, [query]);
 
     return (
-        <div>
+        <div className='w-full h-full bg-red-50 m-0'>
             {users.map((user) => (<UserComponent key={user.id} user={user} />))}
 
             <PaginationComponent total={total} limit={limit} />

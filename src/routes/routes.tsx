@@ -5,7 +5,9 @@ import HomePage from "../pages/HomePage";
 import AuthPage from "../pages/AuthPage";
 import UsersPage from "../pages/UsersPage";
 import RecipesPage from "../pages/RecipesPage";
-import RecipeDetailPage from "../pages/RecipeDetailPage"; // Імпортуємо компонент деталів рецепта
+import RecipeDetailPage from "../pages/RecipeDetailPage";
+import RecipeTagPage from "../pages/RecipeTagPage";
+import SearchPage from "../pages/search-results/SearchPage";
 
 export const routes = createBrowserRouter([
     {
@@ -14,10 +16,12 @@ export const routes = createBrowserRouter([
         children: [
             { index: true, element: <HomePage /> },
             { path: 'auth', element: <AuthPage /> },
-            { path: '/auth/users', element: <UsersPage /> },
-            { path: '/auth/users/:userId', element: <UserDetailPage /> },
-            { path: '/auth/recipes', element: <RecipesPage /> },
-            { path: '/auth/recipes/:id', element: <RecipeDetailPage /> }
+            { path: 'auth/users', element: <UsersPage /> },
+            { path: 'auth/users/:userId', element: <UserDetailPage /> },
+            { path: 'auth/recipes', element: <RecipesPage /> },
+            { path: 'auth/recipes/:id', element: <RecipeDetailPage /> },
+            { path: 'auth/recipes/tag/:tag', element: <RecipeTagPage /> },
+            { path: "/search/:searchType/:query", element: <SearchPage /> }
         ]
     }
 ]);
