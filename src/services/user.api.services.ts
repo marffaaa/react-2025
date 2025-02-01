@@ -1,13 +1,13 @@
-import axios from "axios";
-import {urls} from "../constants/urls";
-import {IRecipe} from "../models/IRecipe";
-import {IUser} from "../models/IUser";
-import {IUsersResponse} from "../models/IUsersResponse";
+import { IRecipe } from "../models/IRecipe";
+import { IUser } from "../models/IUser";
+import { IUsersResponse } from "../models/IUsersResponse";
+import { getAuthAxios } from "./authAxiosInstance";
 
 
 export const getAllUsers = async (skip: string): Promise<IUsersResponse> => {
     try {
-        const response = await axios.get<IUsersResponse>(`${urls.users.allUsers}?skip=${skip}`);
+        const axiosInstance = getAuthAxios();
+        const response = await axiosInstance.get<IUsersResponse>(`https://dummyjson.com/users?skip=${skip}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching users:", error);
@@ -17,7 +17,8 @@ export const getAllUsers = async (skip: string): Promise<IUsersResponse> => {
 
 export const getUserById = async (id: number): Promise<IUser> => {
     try {
-        const response = await axios.get<IUser>(urls.users.byID(id));
+        const axiosInstance = getAuthAxios();
+        const response = await axiosInstance.get<IUser>(`https://dummyjson.com/users/${id}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching user by ID:", error);
@@ -27,13 +28,11 @@ export const getUserById = async (id: number): Promise<IUser> => {
 
 export const getAllUserRecipes = async (): Promise<IRecipe[]> => {
     try {
-        const response = await axios.get<{ recipes: IRecipe[] }>("https://dummyjson.com/recipes");
+        const axiosInstance = getAuthAxios();
+        const response = await axiosInstance.get<{ recipes: IRecipe[] }>("https://dummyjson.com/recipes");
         return response.data.recipes;
     } catch (error) {
         console.error("Error fetching recipes:", error);
         throw error;
     }
 };
-
-
-

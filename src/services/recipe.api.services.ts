@@ -1,24 +1,26 @@
-import axios from "axios";
 import { IRecipe } from "../models/IRecipe";
-import { urls } from "../constants/urls";
 import { IRecipeResponse } from "../models/IRecipeResponse";
+import { getAuthAxios } from "./authAxiosInstance";
+
 
 export const getAllRecipes = async (skip: string): Promise<IRecipeResponse> => {
     try {
-        const response = await axios.get<IRecipeResponse>(`${urls.recipes.allRecipes}?skip=${skip}`);
+        const axiosInstance = getAuthAxios();
+        const response = await axiosInstance.get<IRecipeResponse>(`https://dummyjson.com/recipes?skip=${skip}`);
         return response.data;
     } catch (error) {
-        console.error("Error fetching all recipes:", error);
+        console.error(error);
         throw error;
     }
 };
 
 export const getRecipeById = async (id: number): Promise<IRecipe> => {
     try {
-        const response = await axios.get<IRecipe>(urls.recipes.recipeById(id));
+        const axiosInstance = getAuthAxios();
+        const response = await axiosInstance.get<IRecipe>(`https://dummyjson.com/recipes/${id}`);
         return response.data;
     } catch (error) {
-        console.error("Error fetching recipe by ID:", error);
+        console.error(error);
         throw error;
     }
 };
