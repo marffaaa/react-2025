@@ -1,4 +1,3 @@
-
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "../../models/IUser";

@@ -3,7 +3,8 @@ import { useSearchParams } from "react-router-dom";
 import RecipeComponent from "../recipe/RecipeComponent";
 import PaginationComponent from "../pagination/PaginationComponent";
 import { IRecipe } from "../../models/IRecipe";
-import { getAllRecipes } from "../../services/api.services";
+import { getAllRecipes } from "../../services/recipe.api.services";
+
 
 const RecipesComponent = () => {
     const [query] = useSearchParams();

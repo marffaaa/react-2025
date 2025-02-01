@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserDetailsComponent from "../components/user/UserDetailsComponent";
 import { IUser } from "../models/IUser";
-import { getUserById } from "../services/api.services";
+import { getUserById } from "../services/user.api.services";
+
 
 const UserDetailsPage = () => {
     const { userId } = useParams();

@@ -2,8 +2,9 @@ import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
 import UserComponent from "../user/UserComponent";
 import PaginationComponent from "../pagination/PaginationComponent";
-import { getAllUsers } from "../../services/api.services";
+
 import { IUser } from "../../models/IUser";
+import { getAllUsers } from "../../services/user.api.services";
 
 const UsersComponent = () => {
     const [query] = useSearchParams();

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { IRecipe } from "../models/IRecipe";
-import { getAllRecipes } from "../services/api.services";
 import { IRecipeResponse } from "../models/IRecipeResponse";
 import RecipeListComponent from "../components/recipes/RecipeListComponent";
 import PaginationComponent from "../components/pagination/PaginationComponent";
+import { getAllRecipes } from "../services/recipe.api.services";
 
 const limit = 10; // Скільки рецептів відображати на сторінці
 

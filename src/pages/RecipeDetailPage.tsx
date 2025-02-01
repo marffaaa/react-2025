@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IRecipe } from "../models/IRecipe";
-import { getRecipeById } from "../services/api.services";
 import RecipeDetailsComponent from "../components/recipe/RecipeDetailsComponent";
+import { getRecipeById } from "../services/recipe.api.services";
 
 const RecipeDetailPage = () => {
     const { id } = useParams();
