@@ -10,14 +10,12 @@ const PaginationComponent: React.FC<PaginationProps> = ({ total, limit }) => {
 
     const currentSkip = Number(query.get('skip') || 0);
 
-    // Обробка кнопки "Previous"
     const handlePrev = () => {
         if (currentSkip > 0) {
             setQuery({ skip: (currentSkip - limit).toString() });
         }
     };
 
-    // Обробка кнопки "Next"
     const handleNext = () => {
         if (currentSkip + limit < total) {
             setQuery({ skip: (currentSkip + limit).toString() });

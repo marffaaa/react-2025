@@ -1,5 +1,3 @@
-
-
 const HomePage = () => {
     return (
         <div className='flex flex-col justify-center items-center w-full h-screen border-t-2 border-red-950 bg-red-50 m-0 pt-5'>

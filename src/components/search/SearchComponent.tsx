@@ -16,10 +16,7 @@ const SearchComponent = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!query.trim()) return;
-
         const formattedQuery = capitalizeFirstLetter(query);
-
-        // Формуємо URL відповідно до визначеного типу пошуку
         navigate(`/search/${searchType}/${formattedQuery}`);
         setQuery("");
     };

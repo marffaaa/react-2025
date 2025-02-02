@@ -6,8 +6,6 @@ type PropsType = {
     recipe: IRecipe;
 }
 
-
-
 const RecipeComponent: FC<PropsType> = ({ recipe }) => {
 
     const navigate = useNavigate();

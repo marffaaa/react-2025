@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import UserDetailPage from "../pages/UserDetailPage";
 import Layout from "../layouts/Layout";
 import HomePage from "../pages/HomePage";
 import AuthPage from "../pages/AuthPage";
 import UsersPage from "../pages/UsersPage";
 import RecipesPage from "../pages/RecipesPage";
-import RecipeDetailPage from "../pages/RecipeDetailPage";
-import RecipeTagPage from "../pages/RecipeTagPage";
 import SearchPage from "../pages/search-results/SearchPage";
+import RecipeTagPage from "../pages/recipe-tag/RecipeTagPage";
+import UserDetailPage from "../pages/user-detail/UserDetailPage";
+import RecipeDetailPage from "../pages/recipe-detail/RecipeDetailPage";
 
 export const routes = createBrowserRouter([
     {

@@ -1,16 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { IRecipe } from "../../../models/IRecipe";
 
-export const loadRecipes =createAsyncThunk(
+interface RecipeResponse {
+    recipes: IRecipe[];
+    total: number;
+}
+
+export const loadRecipes = createAsyncThunk(
     'recipeSlice/loadRecipes',
-    async (_, thunkAPI)=>{
+    async (skip: string, thunkAPI) => {
         try {
-            const recipes = await fetch('https://dummyjson.com/recipes')
-                .then(value => value.json())
-            // thunkAPI.dispatch(userSliceAction.changeLoadState(true))
-            return thunkAPI.fulfillWithValue(recipes);
+            // Завантажуємо дані з API
+            const response = await fetch(`https://dummyjson.com/recipes?skip=${skip}&limit=30`);
+            const data: RecipeResponse = await response.json();
 
-        } catch (e){
-            return thunkAPI.rejectWithValue('some error')
+            // Повертаємо рецепти
+            return thunkAPI.fulfillWithValue(data);
+        } catch (e) {
+            // Обробка помилки
+            return thunkAPI.rejectWithValue('some error');
         }
     }
-)
+);

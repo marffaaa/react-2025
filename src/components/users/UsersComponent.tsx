@@ -1,28 +1,20 @@
-import {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import UserComponent from "../user/UserComponent";
 import PaginationComponent from "../pagination/PaginationComponent";
-
-import { IUser } from "../../models/IUser";
-import { getAllUsers } from "../../services/user.api.services";
+import { useAppSelector } from "../../redux/hooks/useAppSelector";
 
 const UsersComponent = () => {
     const [query] = useSearchParams();
-    const [users, setUsers] = useState<IUser[]>([]);
-    const [total, setTotal] = useState<number>(0);
+    const { users, total } = useAppSelector(state => state.userSlice);
     const limit = 30;
-    const skip = Number(query.get('skip')) || 0;
-
-    useEffect(() => {
-        getAllUsers(skip.toString()).then((value) => {
-            setUsers(value.users);
-            setTotal(value.total);
-        });
-    }, [query]);
+    const skip = Number(query.get("skip")) || 0;
+    console.log(skip)
 
     return (
-        <div className='w-full h-full bg-red-50 m-0'>
-            {users.map((user) => (<UserComponent key={user.id} user={user} />))}
+        <div className="w-full h-full bg-red-50 m-0">
+            {users.map(user => (
+                <UserComponent key={user.id} user={user} />
+            ))}
 
             <PaginationComponent total={total} limit={limit} />
         </div>

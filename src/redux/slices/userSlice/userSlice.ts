@@ -1,43 +1,53 @@
-import {createSlice, isFulfilled, isRejected, PayloadAction} from "@reduxjs/toolkit"
-import {IUser} from "../../../models/IUser"
-import {loadUsers} from "./loadUsers"
-import {loadUser} from "./loadUser"
+import { createSlice, isFulfilled, isRejected, PayloadAction } from "@reduxjs/toolkit";
+import { IUser } from "../../../models/IUser";
+import { loadUsers } from "./loadUsers";
+import { loadUser } from "./loadUser";
 
-type UserSliceType={
-    users : IUser[]
-    user : IUser|null,
-    loadState: boolean
-}
+type UserSliceType = {
+    users: IUser[];
+    user: IUser | null;
+    total: number;
+    loadState: boolean;
+};
 
-const userInitialState: UserSliceType= {users:[], user: null, loadState: false}
+const userInitialState: UserSliceType = {
+    users: [],
+    user: null,
+    total: 0, // Додано total
+    loadState: false,
+};
+
 export const userSlice = createSlice({
     name: "userSlice",
     initialState: userInitialState,
-    reducers:{
-        changeLoadState : (state, action: PayloadAction<boolean>)=>{
-            state.loadState = action.payload
-        }
+    reducers: {
+        changeLoadState: (state, action: PayloadAction<boolean>) => {
+            state.loadState = action.payload;
+        },
     },
-    extraReducers: bilder =>
-        bilder
-            .addCase(loadUsers.fulfilled, (state, action: PayloadAction<IUser[]>)=>{
-                state.users = action.payload
+    extraReducers: (builder) =>
+        builder
+            .addCase(loadUsers.fulfilled, (state, action: PayloadAction<{ users: IUser[]; total: number }>) => {
+                state.users = action.payload.users;
+                state.total = action.payload.total; // Оновлення total
             })
-            .addCase(loadUsers.rejected, (state, action)=>{
-                console.log(state)
-                console.log(action)
+            .addCase(loadUsers.rejected, (state, action) => {
+                console.log(state);
+                console.log(action);
             })
-            .addCase(loadUser.fulfilled, (state, action: PayloadAction<IUser>)=>{
-                state.user = action.payload
+            .addCase(loadUser.fulfilled, (state, action: PayloadAction<IUser>) => {
+                state.user = action.payload;
             })
             .addMatcher(isFulfilled(loadUsers, loadUser), (state) => {
-                state.loadState = true
+                state.loadState = false; // Завантаження завершене
             })
-            .addMatcher(isRejected(loadUser, loadUsers),(state) =>{
-                console.log(state)
-            })
-})
+            .addMatcher(isRejected(loadUser, loadUsers), (state) => {
+                console.log(state);
+            }),
+});
 
 export const userSliceAction = {
-    ...userSlice.actions, loadUsers, loadUser
-}
+    ...userSlice.actions,
+    loadUsers,
+    loadUser,
+};
