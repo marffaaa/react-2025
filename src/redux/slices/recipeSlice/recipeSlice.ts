@@ -3,15 +3,14 @@ import { IRecipe } from "../../../models/IRecipe";
 import { loadRecipe } from "./loadRecipe";
 import { loadRecipes } from "./loadRecipes";
 
-// Оновлений тип RecipeSliceType з доданим total
 type RecipeSliceType = {
     recipes: IRecipe[];
     recipe: IRecipe | null;
     loadState: boolean;
-    total: number;  // Додаємо властивість total для кількості рецептів
+    total: number;
 };
 
-const recipeInitialState: RecipeSliceType = { recipes: [], recipe: null, loadState: false, total: 0 };  // Початкове значення для total
+const recipeInitialState: RecipeSliceType = { recipes: [], recipe: null, loadState: false, total: 0 };
 
 export const recipeSlice = createSlice({
     name: "recipeSlice",
@@ -24,9 +23,8 @@ export const recipeSlice = createSlice({
     extraReducers: (builder) =>
         builder
             .addCase(loadRecipes.fulfilled, (state, action: PayloadAction<{ recipes: IRecipe[]; total: number }>) => {
-                // Зберігаємо рецепти і total в стані
                 state.recipes = action.payload.recipes;
-                state.total = action.payload.total;  // Оновлюємо total
+                state.total = action.payload.total;
             })
             .addCase(loadRecipes.rejected, (state, action) => {
                 console.log(state);

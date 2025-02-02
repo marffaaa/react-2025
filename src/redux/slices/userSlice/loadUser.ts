@@ -6,7 +6,6 @@ export const loadUser =createAsyncThunk(
         try {
             const user = await fetch('https://dummyjson.com/users/' + id)
                 .then(value => value.json())
-            // thunkAPI.dispatch(userSliceAction.changeLoadState(true))
             return thunkAPI.fulfillWithValue(user)
         } catch (e){
             return thunkAPI.rejectWithValue('some error')

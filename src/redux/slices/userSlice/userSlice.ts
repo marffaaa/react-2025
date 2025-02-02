@@ -13,7 +13,7 @@ type UserSliceType = {
 const userInitialState: UserSliceType = {
     users: [],
     user: null,
-    total: 0, // Додано total
+    total: 0,
     loadState: false,
 };
 
@@ -29,7 +29,7 @@ export const userSlice = createSlice({
         builder
             .addCase(loadUsers.fulfilled, (state, action: PayloadAction<{ users: IUser[]; total: number }>) => {
                 state.users = action.payload.users;
-                state.total = action.payload.total; // Оновлення total
+                state.total = action.payload.total;
             })
             .addCase(loadUsers.rejected, (state, action) => {
                 console.log(state);
@@ -39,7 +39,7 @@ export const userSlice = createSlice({
                 state.user = action.payload;
             })
             .addMatcher(isFulfilled(loadUsers, loadUser), (state) => {
-                state.loadState = false; // Завантаження завершене
+                state.loadState = false;
             })
             .addMatcher(isRejected(loadUser, loadUsers), (state) => {
                 console.log(state);
